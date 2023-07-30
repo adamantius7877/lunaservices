@@ -1,0 +1,10 @@
+<h2>Luna Node</h2>
+<p><strong>Node ID:</strong> {{ node.NodeId }}</p>
+<p><strong>HostName:</strong> {{ node.HostName }}</p>
+<p><strong>Ip:</strong> {{ node.IPAddress }}</p>
+<h3>Data</h3>
+<ul>
+    {% for item in node.Data %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>

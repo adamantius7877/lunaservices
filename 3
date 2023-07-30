@@ -1,0 +1,109 @@
+from neo4j import GraphDatabase
+import json
+
+class GraphDataModule(object):
+
+    def __ini__(self, dbInfo):
+        self.ConnectionString = f"neo4j://{dbInfo.Server}:{dbInfo.Port}"
+        self.Driver = GraphDatabase.driver(self.ConnectionString, auth=(dbInfo.Username, dbInfo.Password))
+
+class GraphDataObject(object):
+
+    def __init__(self, dbDriver, typeName):
+        self.Driver = dbDriver
+        self.TypeName = typeName 
+        self.Name = ""
+        self.Id = 0
+
+    def GetProps(self):
+        props = []
+        [props.append(a) for a in dir(self) if not a.startswith('__') and not callable(getattr(self, a))]
+        return props
+
+    def GetDict(self):
+        dictReturn = {}
+        props = self.GetProps()
+        for prop in props:
+            dictReturn[prop] = getattr(self, prop)
+        return dictReturn
+
+    def GetMap(self):
+        mapping = "{"
+        props = self.GetDict()
+        for key in props:
+            if isinstance(props[key], str):
+                mapping += f"{key}:'{props[key]}',"
+            else:
+                mapping += f"{key}:{props[key]},"
+        mapping = mapping[0:len(mapping)-1]
+        mapping += "}"
+        return mapping
+
+    def Update(self):
+        with self.Driver.session() as session:
+            session.execute_write(self.Update)
+
+    def Add(self, tx):
+        mapping = self.GetMap()
+        query = f"CREATE ({self.Name}:{self.TypeName} {mapping})"
+        tx.run(query)
+
+    def Update(self, tx):
+        query = f"MATCH ({self.Name}:{self.TypeName})"
+        mapping = self.GetMap()
+        query += f"{self.Name} = {mapping}"
+        tx.run(query)
+
+    def Serialize(self):
+        json.dumps(self.GetDict())
+
+    def Deserialize(self, jsonObject):
+        pass
+
+    def RelationshipQuery(self):
+        pass
+
+    def Populate(self, record):
+        pass
+
+class GraphNode(GraphDataObject):
+
+    def __init__(self, dbDriver, typeName):
+        super(GraphNode, self).__init__(dbDriver, typeName)
+
+    def AddRelationship(self, relationship, toNode):
+        with self.Driver.session() as session:
+            session.execute_write(self.AddRelationship, relationship, toNode)
+
+    def AddRelationship(self, tx, relationship, toNode):
+        query = "MERGE $selfnode$relations$toNode"
+        tx.run(query, selfnode = self.RelationshipQuery(), relations=relationship.RelationshipQuery(), tonode = toNode.RelationshipQuery())
+
+    def RelationshipQuery(self):
+        return f"({self.Name}:{self.TypeName})"
+
+    def Get(self, tx, name):
+        query = f"MATCH (n:{self.TypeName}) WHERE n.Name = $name"
+        for record in tx.run(query, name=name):
+            self.Populate(record)
+
+    def GetAll(self, tx):
+        query = f"MATCH (n:{self.TypeName})"
+        nodes = []
+        for record in tx.run(query):
+            newNode = self.GetNew()
+            newNode.Populate(record)
+            nodes.append(newNode)
+
+    def GetNew(self):
+        return 
+
+
+class GraphRelationship(GraphDataObject):
+
+    def __init__(self, dbDriver, typeName):
+        super(GraphRelationship, self).__init__(dbDriver, typeName)
+
+    def RelationshipQuery(self):
+        return f"-[{self.Name}:{self.TypeName}]->"
+

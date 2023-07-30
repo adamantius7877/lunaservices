@@ -1,0 +1,14 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="row">
+    {% include 'app/texttospeech.html' %}
+    {% block parent_content %}
+        {% include 'app/nodewidget.html' %}
+    {% endblock %}
+    {% csrf_token %}
+    {{ message.as_p }}
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LunaServices", "LunaServices\LunaServices.pyproj", "{41830B9D-9C5B-4D36-B561-4C3D15DA4AEC}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LunaCommon", "LunaCommon\LunaCommon.pyproj", "{2E23C501-F9CE-46B8-B990-5F77BCEBBD4E}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LunaNode", "LunaNode\LunaNode.pyproj", "{292DD039-C319-4462-B832-CC1368BC5276}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LunaControlPanelAPI", "LunaControlPanelAPI\LunaControlPanelAPI.pyproj", "{D9C3CD92-1F03-4B0F-A829-CF38C4D4AF93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41830B9D-9C5B-4D36-B561-4C3D15DA4AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41830B9D-9C5B-4D36-B561-4C3D15DA4AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E23C501-F9CE-46B8-B990-5F77BCEBBD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E23C501-F9CE-46B8-B990-5F77BCEBBD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292DD039-C319-4462-B832-CC1368BC5276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292DD039-C319-4462-B832-CC1368BC5276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C3CD92-1F03-4B0F-A829-CF38C4D4AF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C3CD92-1F03-4B0F-A829-CF38C4D4AF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C3CD92-1F03-4B0F-A829-CF38C4D4AF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C3CD92-1F03-4B0F-A829-CF38C4D4AF93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78484B02-459C-4E65-86A2-519CF3BB49AF}
+	EndGlobalSection
+EndGlobal
