@@ -366,3 +366,6 @@ LunaServices/model/
 /model.zip
 /LunaControlPanelAPI/venv
 /LunaControlPanelAPI/lunanode
+/LunaNode/lunaconfig.json
+/LunaServices/lunaconfig.json
+/LunaControlPanelAPI/lunaconfig.json
