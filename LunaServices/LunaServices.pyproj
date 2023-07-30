@@ -10,7 +10,7 @@
     <OutputPath>.</OutputPath>
     <Name>LunaServices</Name>
     <RootNamespace>LunaServices</RootNamespace>
-    <InterpreterId>Global|PythonCore|3.7</InterpreterId>
+    <InterpreterId>Global|VisualStudio|Base LUNA Environment</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

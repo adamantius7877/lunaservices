@@ -365,3 +365,4 @@ LunaServices/model/
 /LunaServices/env
 /model.zip
 /LunaControlPanelAPI/venv
+/LunaControlPanelAPI/lunanode
