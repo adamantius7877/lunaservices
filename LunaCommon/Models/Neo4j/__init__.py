@@ -10,4 +10,4 @@ from .LunaProperty import LunaProperty
 from .LunaRoom import LunaRoom
 from .LunaUser import LunaUser
 from .LunaZone import LunaZone
-from .LunaKeyword import LunaKeyword
+from .lunakeyword import LunaKeyword

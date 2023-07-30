@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lunaconfig.json" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LunaCommon\LunaCommon.pyproj">

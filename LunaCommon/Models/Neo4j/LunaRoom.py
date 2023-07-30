@@ -5,7 +5,7 @@ from Common.enums import GraphNodeType
 class LunaRoom(GraphNode):
 
     def __ini__(self):
-        super(Room, self).__ini__(GraphNodeType.ROOM)
+        super().__ini__(GraphNodeType.ROOM)
         self.Name = ""
 
 
